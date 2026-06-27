@@ -19,15 +19,20 @@ public class BdccEnsetSpringMvcApplication {
     public CommandLineRunner start(ProductRepository productRepository) {
         return args -> {
             productRepository.save(Product.builder()
-                            .name("Computer Science")
+                            .name("Computer 3")
                             .price(500)
                             .quantity(12)
                             .build());
             productRepository.save(Product.builder()
-                    .name("Smartphone")
+                    .name("printer")
                     .price(3000)
                     .quantity(10)
                     .build());
+            productRepository.findAll().forEach(
+                    p -> {
+                        System.out.println(p.toString());
+                    }
+            );
         };
     }
 
