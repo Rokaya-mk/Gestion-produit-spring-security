@@ -16,12 +16,19 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @GetMapping("/index")
-    public String index(Model model) {
+    public String index(Model model)
+    {
 
         List<Product> products = productRepository.findAll();
         model.addAttribute("productsList", products);
         return "products";
     }
+    @GetMapping("/")
+    public String home()
+    {
+        return "redirect:/index";
+    }
+
     @GetMapping("/delete")
     public String delete( @RequestParam(name="id") Long id){
         productRepository.deleteById(id);
